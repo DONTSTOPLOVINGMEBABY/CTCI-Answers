@@ -47,6 +47,23 @@ def kth_to_last_element_function2(linked_list, k_elem):
     return hold_head1 
 
 
+## optimal 
+
+def kth_to_last_element_twoPointers(linked_list, k_elem):
+    pointer1 = linked_list.head
+    pointer2 = linked_list.head 
+    counter = 0 
+    while counter < k_elem :
+        pointer1 = pointer1.next 
+        counter += 1 
+
+    while pointer1 != None :
+        pointer1 = pointer1.next
+        pointer2 = pointer2.next 
+    
+    return pointer2 
+
+
 
 sll = Singly_Linked_List() 
 for i in range(10):
@@ -56,4 +73,4 @@ print(sll)
 
 print(kth_to_last_element_function1(sll, 4)) 
 print(kth_to_last_element_function2(sll, 4)) 
-
+print(kth_to_last_element_twoPointers(sll,4)) 

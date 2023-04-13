@@ -23,8 +23,7 @@ class Singly_Linked_List:
         self.head = None 
         self.length = 0 
 
-    def append(self, data):
-        node = sll_Node(data) 
+    def append(self, node):
         self.length += 1 
         if self.head == None : 
             self.head = node 
@@ -39,18 +38,12 @@ class Singly_Linked_List:
     ## THIS IS THE FUNCTION FROM THE QUESTION 
 
 
-
-    def delete_node_given_only_node(self, node) : 
-        hold_current = self.head 
-        while hold_current.next is not node :
-            hold_current = hold_current.next 
-        hold_current.next = hold_current.next.next 
-        
-
-
-
-
-
+    def delete_middle_node(self, node):
+        if node == None or node.next == None : return False 
+        copy_data = node.next.data 
+        node.data = copy_data 
+        node.next = node.next.next 
+    
     #########################################
 
    
@@ -86,5 +79,6 @@ sll.append(node6)
 
 
 print(sll) 
-sll.delete_node_given_only_node(node2) 
+sll.delete_middle_node(node2) 
+sll.delete_middle_node(node4)
 print(sll) 
