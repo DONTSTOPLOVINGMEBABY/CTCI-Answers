@@ -17,13 +17,23 @@ def fast_slow_runner(linked_list):
     while fast != None and fast.next != None : 
         slow = slow.next
         fast = fast.next.next 
-    print(slow) 
+    print(slow, fast, len(linked_list)) 
 
 
-sll = helpers.Singly_Linked_List() 
+ll_even = helpers.Singly_Linked_List()
+ll_odd = helpers.Singly_Linked_List()
+
 for i in range(8):
-    sll.append(i * i)
-recursively_print_ll(sll.head) 
-print()
-print(recursively_sum_ll(sll.head, 0)) 
-print(fast_slow_runner(sll)) 
+    ll_even.append(i) 
+
+for i in range(7):
+    ll_odd.append(i + 8)
+
+
+print(ll_even) ; fast_slow_runner(ll_even) 
+
+print(ll_odd) ; fast_slow_runner(ll_odd) 
+
+
+
+

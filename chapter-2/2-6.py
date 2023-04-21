@@ -83,10 +83,6 @@ def use_a_stack(linked_list):
     return True 
     
 
-def len_of_list_given(linked_list):
-    print(len(linked_list)) 
-
-
 
 palindromes = [ "RACECAR", "DAD", "SAM", "404", "3212" ] 
 linked_lists = []
