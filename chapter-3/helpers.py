@@ -60,8 +60,8 @@ class Stack(Singly_Linked_List) :
         return self.head 
 
     def isEmpty(self):
-        return not self.head 
-
+        return not self.head
+    
     def append(self):
         raise CANT_USE_THIS
 

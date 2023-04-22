@@ -6,54 +6,37 @@ Implement a MyQueue class which implements a queue using two stacks
 
 '''
 
-
-class MyQueue:
+class HerQueue:
     def __init__(self):
-        self.stack1 = Stack()
-        self.stack2 = Stack()
-        self.length = 0 
-
-    def enqueue(self, data):
-        self.length += 1 
-        element = Element(data)
-        self.stack1.push(element)
+        self.stack_newest = Stack()
+        self.stack_oldest = Stack()
     
-    def dequeue(self):
-        self.length -= 1 
-        while not self.stack1.isEmpty():
-            item = self.stack1.pop()
-            new_element = Element(item.data)
-            self.stack2.push(new_element)
-        item = self.stack2.pop()
+    def size(self):
+        return len(self.stack_newest) + len(self.stack_oldest)
 
-        while not self.stack2.isEmpty():
-            item = self.stack2.pop()
-            new_element = Element(item.data)
-            self.stack1.push(item)
-        return item 
-
-    def isEmpty(self):
-        return not self.length
-
-    def print_queue(self):
-        while not self.stack1.isEmpty():
-            item = self.stack1.pop()
-            new_element = Element(item.data)
-            self.stack2.push(new_element)
-        item = self.stack2.pop()
-        new_element = Element(item.data)
-        self.stack1.push(new_element)
-        print(new_element)
-        while not self.stack2.isEmpty():
-            item = self.stack2.pop()
-            new_element = Element(item.data)
-            self.stack1.push(new_element)
-            print(new_element.data)
+    def add(self, value):
+        self.stack_newest.push(Element(value))
+    
+    def shiftStacks(self):
+        if self.stack_oldest.isEmpty():
+            while not self.stack_newest.isEmpty():
+                self.stack_oldest.push(self.stack_newest.pop())
+    
+    def peek(self):
+        self.shiftStacks()
+        return self.stack_oldest.peek()
+    
+    def remove(self):
+        self.shiftStacks()
+        return self.stack_oldest.pop()
 
 
-q = MyQueue()
+q = HerQueue()
 for i in range(10):
-    q.enqueue(i)
+    q.add(i)
 
-print(q.dequeue())
-q.print_queue()
+print(q)
+
+for i in range(10):
+    print(q.peek())
+    print(q.remove().data)
