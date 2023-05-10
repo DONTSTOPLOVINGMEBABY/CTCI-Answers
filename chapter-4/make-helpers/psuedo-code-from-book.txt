@@ -1,0 +1,55 @@
+**** I translated all of this from Java, so it could be a little incorrect  :) (: ****
+
+
+
+-----------------------------------------
+Simple Tree/Tree Node Definition
+
+class Node : 
+    def __init__(self, name):
+        self.name = name 
+        self.children = []
+    
+class Tree :
+    def __init__(self):
+        self.root = None 
+    
+    def setRoot(self, node):
+        if not self.root : return 
+        self.root = node 
+    
+-----------------------------------------
+In/Post/Pre-Order Traversal 
+
+def inOrderTraversal (node):
+    if node != None : 
+        inOrderTraversal(node.left)
+        visit(node) // Pretty sure this is just getData
+        inOrderTraversal(node.right)
+        // Another Imaginary Return Here
+    // Imaginary return here
+
+- In Order visits the left branch, then the current branch, and then the right branch 
+
+
+def preOrderTraversal (node) :
+    if node != None :
+        visit(node)
+        preOrderTraversal(node.left)
+        preOrderTraversal(node.right)
+        // Another Imaginary Return Here
+    // Imaginary return here 
+
+- Pre Order vists the current node, then left, then right. Root node is always visited first 
+
+def postOrderTraversal (node) :
+    if node != None :
+        postOrderTraversal( node.left )
+        postOrderTraversal( node.right )
+        visit(node)
+        // Another Imaginary Return Here
+    // Imaginary return here
+
+- Post order visits children nodes (left then right) before visiting parent nodes. Root node is visited last. 
+
+-----------------------------------------
